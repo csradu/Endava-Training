@@ -2,9 +2,7 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 23.07.2015
  */
-package com.endava.generics;
-
-import com.endava.generics.exceptions.EmptyListException;
+package main.java.com.endava.generics;
 
 import java.util.*;
 
