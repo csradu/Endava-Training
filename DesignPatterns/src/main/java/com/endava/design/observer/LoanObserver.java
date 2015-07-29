@@ -4,6 +4,8 @@
  */
 package main.java.com.endava.design.observer;
 
+import main.java.com.endava.design.Worker;
+
 public class LoanObserver extends Observer {
     private Worker worker;
     private double netSalary;

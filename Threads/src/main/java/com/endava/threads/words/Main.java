@@ -4,7 +4,10 @@
  */
 package main.java.com.endava.threads.words;
 
-import java.io.*;
+import main.java.com.endava.threads.words.file.CustomFileReader;
+import main.java.com.endava.threads.words.file.CustomFileWriter;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,15 +16,6 @@ public class Main {
 
     public static final int THREAD_NUMBER = 2;
     private static HashMap<String, Integer> results = new HashMap<>();
-
-    public static synchronized void addWord(String word) {
-        if (results.containsKey(word)) {
-            int newValue = results.get(word) + 1;
-            results.put(word, newValue);
-        } else {
-            results.put(word, 1);
-        }
-    }
 
     /**
      * Reads file, creates threads for processing data and writes results to file
@@ -32,7 +26,9 @@ public class Main {
         try {
             ArrayList<Thread> threadList = new ArrayList();
             ArrayList<String> words = new ArrayList();
-            words = readFile("words.txt");
+            CustomFileReader customReader = new CustomFileReader("words.txt");
+            CustomFileWriter customWriter = new CustomFileWriter("results.txt");
+            words = customReader.readFile();
 
             for (int i = 0; i < THREAD_NUMBER; i++) {
                 WordsPercentage currentThread = new WordsPercentage(words, i);
@@ -43,7 +39,8 @@ public class Main {
             for (int i = 0; i < THREAD_NUMBER; i++) {
                 threadList.get(i).join();
             }
-            writeFile("results.txt", words);
+            HashMap<String, Float> percentages = percentageMap(results, words.size());
+            customWriter.writeFile(percentages);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -51,42 +48,21 @@ public class Main {
         }
     }
 
-    /**
-     * Reads all the words from a file and adds them to an ArrayList
-     *
-     * @param fileName the path to the file
-     * @return an ArrayList with words from the file
-     * @throws IOException
-     */
-    private static ArrayList<String> readFile(String fileName) throws IOException {
-        FileReader readWords = new FileReader(new File(fileName));
-        BufferedReader reader = new BufferedReader(readWords);
-        ArrayList<String> wordsList = new ArrayList();
-        String line = "";
-        while ((line = reader.readLine()) != null) {
-            String[] words = line.split(" ");
-            for (int i = 0; i < words.length; i++) {
-                wordsList.add(words[i]);
-            }
+    public static synchronized void addWord(String word) {
+        if (results.containsKey(word)) {
+            int newValue = results.get(word) + 1;
+            results.put(word, newValue);
+        } else {
+            results.put(word, 1);
         }
-        return wordsList;
-
     }
 
-    /**
-     * Writes a the words and their percentages to a specified file
-     *
-     * @param fileName the file to where the words are written
-     * @param words    list of words
-     * @throws IOException
-     */
-    private static void writeFile(String fileName, ArrayList<String> words) throws IOException {
-        PrintStream writeWords = new PrintStream(new File(fileName));
-        for (Map.Entry<String, Integer> entry : results.entrySet()) {
-            float percentage = (float) entry.getValue() / (float) words.size() * 100;
-            writeWords.printf("%s %.2f", entry.getKey(), percentage);
-            writeWords.println("%");
+    private static HashMap<String, Float> percentageMap(HashMap<String, Integer> wordsMap, int numberOfWords) {
+        HashMap<String, Float> percentageMap = new HashMap();
+        for (Map.Entry<String, Integer> entry : wordsMap.entrySet()) {
+            float percentage = (float) entry.getValue() / (float) numberOfWords * 100;
+            percentageMap.put(entry.getKey(), percentage);
         }
-        writeWords.close();
+        return percentageMap;
     }
 }

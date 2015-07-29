@@ -4,6 +4,8 @@
  */
 package main.java.com.endava.design.observer;
 
+import main.java.com.endava.design.Worker;
+
 public abstract class Observer {
     protected Worker worker;
     public abstract void udpate();
