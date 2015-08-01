@@ -2,7 +2,7 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 28.07.2015
  */
-package main.java.com.endava.threads.words;
+package com.endava.threads.words;
 
 import java.util.List;
 
@@ -16,7 +16,6 @@ public class WordsPercentage implements Runnable {
         this.threadNumber = threadNumber;
     }
 
-    @Override
     public void run() {
         int endIndex;
         int startIndex;

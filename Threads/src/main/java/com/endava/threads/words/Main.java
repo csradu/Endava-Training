@@ -2,10 +2,10 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 28.07.2015
  */
-package main.java.com.endava.threads.words;
+package com.endava.threads.words;
 
-import main.java.com.endava.threads.words.file.CustomFileReader;
-import main.java.com.endava.threads.words.file.CustomFileWriter;
+import com.endava.threads.words.file.CustomFileReader;
+import com.endava.threads.words.file.CustomFileWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class Main {
 
     public static final int THREAD_NUMBER = 2;
-    private static HashMap<String, Integer> results = new HashMap<>();
+    private static HashMap<String, Integer> results = new HashMap();
 
     /**
      * Reads file, creates threads for processing data and writes results to file

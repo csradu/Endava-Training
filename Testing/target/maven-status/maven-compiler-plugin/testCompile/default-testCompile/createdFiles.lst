@@ -1,0 +1,5 @@
+com\endava\graduates\trainings\patterns\SuperAgentPatternTestCase.class
+com\endava\graduates\trainings\utils\StringUtilsTestCase.class
+com\endava\graduates\trainings\file\StubFileRead.class
+com\endava\graduates\trainings\patterns\FileContentPatternTestCase.class
+com\endava\graduates\trainings\services\RankServiceTestCase.class

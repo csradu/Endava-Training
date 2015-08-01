@@ -2,7 +2,9 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 28.07.2015
  */
-package main.java.com.endava.threads.prime;
+package com.endava.threads.prime;
+
+import com.endava.threads.prime.PrimeNumbers;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +14,7 @@ public class Main {
     //List of random generated numbers
     private static ArrayList<Integer> numbersList = new ArrayList();
     private static ArrayList<Thread> threadList = new ArrayList();
-    private static ArrayList<Integer> primeNumbers = new ArrayList<>();
+    private static ArrayList<Integer> primeNumbers = new ArrayList();
     public static int THREAD_NUMBER = 2;
     private static Random random;
 

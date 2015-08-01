@@ -2,7 +2,7 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 27.07.2015
  */
-package main.java.com.endava.io.counter;
+package com.endava.io.counter;
 
 import java.io.File;
 import java.io.FileNotFoundException;

@@ -2,7 +2,7 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 27.07.2015
  */
-package main.java.com.endava.io.reverse;
+package com.endava.io.reverse;
 
 import java.io.BufferedReader;
 import java.io.File;

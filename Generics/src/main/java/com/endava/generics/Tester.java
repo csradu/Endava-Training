@@ -2,7 +2,9 @@
  * This file is part of the Endava Graduates training program
  * Created by Calin Radu 23.07.2015
  */
-package main.java.com.endava.generics;
+package com.endava.generics;
+
+import com.endava.generics.exceptions.EmptyListException;
 
 import java.util.*;
 
@@ -13,7 +15,7 @@ public class Tester<T> {
     private List<T> bugs;
 
     public Tester() {
-        bugs = new ArrayList<>();
+        bugs = new ArrayList();
     }
 
     public Tester(T[] elements) {
