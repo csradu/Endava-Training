@@ -10,7 +10,11 @@ public class BackAround {
      * Adds the last character of a string at both its ends and returns it
      */
     public String backAround(String str) {
-        char lastChar = str.charAt(str.length() - 1);
-        return lastChar + str + lastChar;
+        String backAroundStr = null;
+        if(str != null) {
+            char lastChar = str.charAt(str.length() - 1);
+            backAroundStr = lastChar + str + lastChar;
+        }
+        return backAroundStr;
     }
 }

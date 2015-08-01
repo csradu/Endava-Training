@@ -40,7 +40,9 @@ public class Main {
         try {
             System.out.println("Testing Calculator.......\n\t The sum of 23 and 92 is " + e9.add(23, 92) +
                     "The average value of {2, 9, 6, 17} is " + e9.average(Arrays.asList(new Integer[]{2, 6, 9, 17})));
-        } catch (OverflowException | UnderflowException e) {
+        } catch (OverflowException e) {
+            System.out.println(e.getMessage());
+        } catch (UnderflowException e) {
             System.out.println(e.getMessage());
         }
         System.out.print("Testing FinallyPriority.......\n\t");
