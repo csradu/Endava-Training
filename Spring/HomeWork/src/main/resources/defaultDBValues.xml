@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <!-->Default values for the countries </!-->
+
+
+    <bean id = "romania" class = "com.endava.spring.jdbc.country.Country">
+        <property name="id" value = "1"/>
+        <property name="name" value = "Romania"/>
+    </bean>
+    <bean id = "germany" class = "com.endava.spring.jdbc.country.Country">
+        <property name="id" value = "2"/>
+        <property name="name" value = "Germany"/>
+    </bean>
+    <bean id = "france" class = "com.endava.spring.jdbc.country.Country">
+        <property name="id" value = "3"/>
+        <property name="name" value = "France"/>
+    </bean>
+    <bean id = "defaultCountries" class = "java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean = "romania"/>
+                <ref bean = "germany"/>
+                <ref bean = "france"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+
+
+
+
+    <!-->Default values for the jobs </!-->
+
+
+    <bean id = "developer" class = "com.endava.spring.jdbc.job.Job">
+        <property name="id" value = "1"/>
+        <property name="name" value = "Developer"/>
+    </bean>
+    <bean id = "tester" class = "com.endava.spring.jdbc.job.Job">
+        <property name="id" value = "2"/>
+        <property name="name" value = "Tester"/>
+    </bean>
+    <bean id = "defaultJobs" class = "java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean = "developer"/>
+                <ref bean = "tester"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+
+
+
+
+
+    <!-->Default values for the employees </!-->
+    <bean id = "calin" class = "com.endava.spring.jdbc.employee.Employee">
+        <property name = "id" value = "1"/>
+        <property name = "firstName" value = "Calin"/>
+        <property name = "lastName" value = "Radu"/>
+        <property name= "job" ref = "developer"/>
+        <property name= "country" ref="romania"/>
+    </bean>
+    <bean id = "marcu" class = "com.endava.spring.jdbc.employee.Employee">
+        <property name = "id" value = "2"/>
+        <property name = "firstName" value = "Marcu"/>
+        <property name = "lastName" value = "Valentinescu"/>
+        <property name= "job" ref = "tester"/>
+        <property name= "country" ref="france"/>
+    </bean>
+    <bean id = "mihaita" class = "com.endava.spring.jdbc.employee.Employee">
+        <property name = "id" value = "3"/>
+        <property name = "firstName" value = "Mihaita"/>
+        <property name = "lastName" value = "Boss"/>
+        <property name= "job" ref = "developer"/>
+        <property name= "country" ref="germany"/>
+    </bean>
+    <bean id = "defaultEmployees" class = "java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean = "calin"/>
+                <ref bean = "marcu"/>
+                <ref bean = "mihaita"/>
+            </list>
+        </constructor-arg>
+    </bean>
+</beans>
